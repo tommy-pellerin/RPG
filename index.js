@@ -123,7 +123,8 @@ class Assassin extends Character {
       console.log(`${this.name} is using shadowHit on ${victim.name} !`);
       this.dealDamage(victim,7);
       if (victim.stat !== "loser") {
-        this.hp = -7 //si l'adversaire n'est pas mort, l'assassin perdra 7 dégâts à son tour.
+        console.log(`${victim.name} is not dead, ${this.nam} lose 7 lifepoints`);
+        this.hp -= 7 //si l'adversaire n'est pas mort, l'assassin perdra 7 dégâts à son tour.
       }
       this.mana = this.mana - 20
 
