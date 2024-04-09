@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THE RPG GAME</title>
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
     <h1>Hello !</h1>
@@ -15,10 +16,12 @@
         <h3>How to play ?</h3>
         <p>When it's your turn, use these commande :</p>
         <ul>
-            <li>Simple attack : yourName.dealDamage(player_you_want_to_attack)</li>
-            <li>Special attack : yourName.specialAttachkName(player_you_want_to_attack)</li>
+            <li>Simple attack : <code>yourName.dealDamage(player_you_want_to_attack)</code></li>
+            <li>Special attack : <code>yourName.specialAttachkName(player_you_want_to_attack)</code></li>
         </ul>
         <h3>Depending of your classe, here are the name of each special attack :</h3>
+        <button id="regularAttack">regularAttack</button><br><br>
+
         <table>
             <tr>
                 <th>playerName</th>
@@ -26,30 +29,30 @@
                 <th>specialAttackName</th>
             </tr>
             <tr>
-                <td>grace</td>
+                <td><button id="grace">grace</button></td>
                 <td>Fighter</td>
-                <td>darkVision</td>
+                <td><button id="darkVision">darkVision</button></td>
 
             </tr>
             <tr>
-                <td>ulder</td>
+                <td><button id="ulder">ulder</button></td>
                 <td>Paladin</td>
-                <td>healingLighting</td>
+                <td><button id="healingLighting">healingLighting</button></td>
             </tr>
             <tr>
-                <td>moana</td>
+                <td><button id="moana">moana</button></td>
                 <td>Monk</td>
-                <td>heal</td>
+                <td><button id="heal">heal</button></td>
             </tr>
             <tr>
-                <td>draven</td>
+                <td><button id="draven">draven</button></td>
                 <td>Berzerker</td>
-                <td>rage</td>
+                <td><button id="rage">rage</button></td>
             </tr>
             <tr>
-                <td>carl</td>
+                <td><button id="carl">carl</button></td>
                 <td>Assasin</td>
-                <td>shadowHit</td>
+                <td><button id="shadowHit">shadowHit</button></td>
             </tr>
         </table>
         
@@ -57,6 +60,9 @@
     <section>
         <h3>If you want to see status, use this :</h3>
         <p>game.watchStats()</p>
+
+        <h3>If you want to change turn, use this :</h3>
+        <p>game.startTurn()</p>
     </section>
 
 
