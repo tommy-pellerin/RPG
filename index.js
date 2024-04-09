@@ -21,14 +21,22 @@ class Character {
       console.log(`${this.name} is attacking ${victim.name}. He/she deals him/her ${victim.dmg} damages.`);
     }
     console.log(`${victim.name} got ${victim.hp} lifepoints left.`);
-    // if (victim.hp <= 0) {
-    //   let victimIndex = game.players.findIndex(victim.name);
-    //   console.log(victimIndex);
-    //   // game.players.slice()
-    //   console.log(`${victim.name} is dead`);
-    // }
+    if (victim.hp <= 0) { 
+      _deleteVictim(victim)
+    } 
     alert("<<< Please click on \'Continue\' to know who's turn it is.")
+  }  
+
+  private
+
+  _deleteVictim(victim) {
+    let victimIndex = game.players.findIndex(player => player.name === victim.name);
+    if (victimIndex !== -1) {
+      game.players.splice(victimIndex, 1);
+    }
+    console.log(`${victim.name} is dead`);
   }
+
 }
 
 class Fighter extends Character {
