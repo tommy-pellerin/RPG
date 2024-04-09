@@ -17,19 +17,18 @@ class Character {
       victim.takeDamage(superDmg);
       console.log(`${this.name} is attacking ${victim.name}. He/she deals him/her ${superDmg} damages.`);
     } else {
-      victim.takeDamage(victim.dmg);
-      console.log(`${this.name} is attacking ${victim.name}. He/she deals him/her ${victim.dmg} damages.`);
+      victim.takeDamage(this.dmg);
+      console.log(`${this.name} is attacking ${victim.name}. He/she deals him/her ${this.dmg} damages.`);
     }
     console.log(`${victim.name} got ${victim.hp} lifepoints left.`);
     if (victim.hp <= 0) { 
-      _deleteVictim(victim)
+      victim.state = "loser";
+      this.deleteVictim(victim);
     } 
-    alert("<<< Please click on \'Continue\' to know who's turn it is.")
+    // alert("<<< Please click on \'Continue\' to know who's turn it is.")
   }  
 
-  private
-
-  _deleteVictim(victim) {
+  deleteVictim(victim) {
     let victimIndex = game.players.findIndex(player => player.name === victim.name);
     if (victimIndex !== -1) {
       game.players.splice(victimIndex, 1);
@@ -109,7 +108,8 @@ class Berzerker extends Character {
     console.log(`${this.name} is using rage on ${victim.name} !`);
     this.dmg = this.dmg + 1 //lui donnant +1 attaque pour tout le reste de la partie mais lui enlevant 1 hp
     this.dealDamage(victim,this.dmg);
-    this.hp = this.hp - 1
+    console.log(`As he/she is in rage, ${this.name} attack him/herself`);
+    this.dealDamage(this,1);
   }
 }
 
@@ -122,9 +122,9 @@ class Assassin extends Character {
     if (this.mana >= 20) {
       console.log(`${this.name} is using shadowHit on ${victim.name} !`);
       this.dealDamage(victim,7);
-      if (victim.stat !== "loser") {
-        console.log(`${victim.name} is not dead, ${this.nam} lose 7 lifepoints`);
-        this.hp -= 7 //si l'adversaire n'est pas mort, l'assassin perdra 7 dégâts à son tour.
+      if (victim.state !== "loser") {
+        console.log(`${victim.name} is not dead, ${this.name} attack him/herself`);
+        this.dealDamage(this,7) //si l'adversaire n'est pas mort, l'assassin perdra 7 dégâts à son tour.
       }
       this.mana = this.mana - 20
 
@@ -143,16 +143,16 @@ class Game {
   }
 
   startTurn() {
-
-    if (this.numberOfTurnLeft <= 0) {
-      console.log(">>>>> Game Over <<<<<");
-      // Filter the players array to only include players with HP greater than 0
-      this.players = this.players.filter(player => player.hp > 0);
-      // Print the names of the remaining players
-      this.players.forEach(player => console.log(`${player.name} is a winner!`));
+    //verify if there is only 1 user, he is the winner
+    if (this.players.length <= 1 || this.numberOfTurnLeft <= 0 ) {
+      this.end_game()
     } else {
       console.log(`It\'s turn : ${11 - this.numberOfTurnLeft}`);
-      console.log(`It's ${this.players[this.currentPlayerIndex].name}'s turn`);
+      
+      if (this.currentPlayerIndex < this.players.length) {
+        let currentPlayer = this.players[this.currentPlayerIndex];
+        console.log(`It's ${currentPlayer.name}'s turn`);
+      }
 
       this.skipTurn()
     }
@@ -172,6 +172,14 @@ class Game {
     })
     console.log("=".repeat(50));
   }
+
+  end_game() {
+    console.log(">>>>> Game Over <<<<<");
+    // Filter the players array to only include players with HP greater than 0
+    this.players = this.players.filter(player => player.hp > 0);
+    // Print the names of the remaining players
+    this.players.forEach(player => console.log(`${player.name} is a winner!`));
+  }
 }
 
 const grace = new Fighter('Grace')
@@ -180,7 +188,7 @@ const moana = new Monk('Moana')
 const draven = new Berzerker('Draven')
 const carl = new Assassin('Carl')
 
-const game = new Game([grace, ulder, moana, draven, carl]);
+const game = new Game([grace, ulder, moana, draven, carl]); //create an array of players
 
 let gameTurn = document.getElementById('gameTurn')
 // console.log(gameTurn);
