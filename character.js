@@ -1,10 +1,11 @@
 class Character {
-  constructor(name, hp, dmg, mana, state = "playing") {
+  constructor(name, hp, dmg, mana, state = "playing", hasPlayed = false) {
     this.name = name;
     this.hp = hp; //Un personnage commence avec un nombre défini de hp. S'il passe à 0 points de vie, il devient loser
     this.dmg = dmg; //damage
     this.mana = mana; //Un personnage commence le jeu avec un nombre précis de mana qui lui permettront d'effectuer son sortilège spécial (coûtant un certain nombre de mana)
     this.state = state; //par défaut à playing. Il pourra passer à winner ou loser
+    this.hasPlayed = hasPlayed
   }
   takeDamage(dmg) {
     this.hp = this.hp - Math.abs(dmg);
@@ -25,7 +26,8 @@ class Character {
       victim.state = "loser";
       this.deleteVictim(victim);
     } 
-    // alert("<<< Please click on \'Continue\' to know who's turn it is.")
+    // After they have played, set hasPlayed to true
+    this.hasPlayed = true;
   }  
 
   deleteVictim(victim) {

@@ -1,6 +1,6 @@
 class Berzerker extends Character {
-  constructor(name, hp = 8, dmg = 4, mana = 0, state) {
-    super(name,hp,dmg,mana, state)
+  constructor(name, hp = 8, dmg = 4, mana = 0, state, hasPlayed) {
+    super(name,hp,dmg,mana, state, hasPlayed)
   }
 
   rage(victim) {

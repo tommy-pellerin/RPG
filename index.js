@@ -24,7 +24,7 @@ gameTurnButton.addEventListener('click',
   function(){
     // game.watchStats();
     game.startTurn();
-    gameTurnButton.innerHTML = "Continue";
+    gameTurnButton.innerHTML = "Next turn";
   }
 );
 

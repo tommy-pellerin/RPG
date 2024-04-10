@@ -1,6 +1,6 @@
 class Assassin extends Character {
-  constructor(name, hp = 6, dmg = 6, mana = 20, state) {
-    super(name,hp,dmg,mana, state)
+  constructor(name, hp = 6, dmg = 6, mana = 20, state, hasPlayed) {
+    super(name,hp,dmg,mana, state, hasPlayed)
   }
 
   shadowHit(victim) { //lui permettant de ne pas prendre de dégâts lors du prochain tour

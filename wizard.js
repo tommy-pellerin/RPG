@@ -1,6 +1,6 @@
 class Wizard extends Character {
-  constructor(name, hp = 10, dmg = 2, mana = 200, state) {
-    super(name,hp,dmg,mana, state)
+  constructor(name, hp = 10, dmg = 2, mana = 200, state, hasPlayed) {
+    super(name,hp,dmg,mana, state, hasPlayed)
   }
 
   fireBall(victim) {

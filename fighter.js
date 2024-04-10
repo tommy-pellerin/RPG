@@ -1,6 +1,6 @@
 class Fighter extends Character {
-  constructor(name, hp = 12, dmg = 4, mana = 40, state) {
-    super(name,hp,dmg,mana, state);    
+  constructor(name, hp = 12, dmg = 4, mana = 40, state, hasPlayed) {
+    super(name,hp,dmg,mana, state, hasPlayed);    
   }
 
   darkVision(victim) {

@@ -1,6 +1,6 @@
 class Demon extends Character {
-  constructor(name, hp = 20, dmg = 3, mana = 60, state) {
-    super(name,hp,dmg,mana, state)
+  constructor(name, hp = 20, dmg = 3, mana = 60, state, hasPlayed) {
+    super(name,hp,dmg,mana, state, hasPlayed)
   }
 
   bloodMeteor(victim) { 
