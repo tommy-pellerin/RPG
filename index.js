@@ -1,12 +1,12 @@
-function startGame() {
-  const grace = new Fighter('Grace');
-  const ulder = new Paladin('Ulder');
-  const moana = new Monk('Moana');
-  const draven = new Berzerker('Draven');
-  const carl = new Assassin('Carl');
-  const voldemor = new Wizard('Voldemor');
-  const lilith = new Demon('Lilith');
+const grace = new Fighter('Grace');
+const ulder = new Paladin('Ulder');
+const moana = new Monk('Moana');
+const draven = new Berzerker('Draven');
+const carl = new Assassin('Carl');
+const voldemor = new Wizard('Voldemor');
+const lilith = new Demon('Lilith');
 
+function startGame() {
   const characters = [grace, ulder, moana, draven, carl, voldemor, lilith]; //create an array of characters
   // create a method to shuffle all 7 character
   const shuffle = array => { 
@@ -31,8 +31,9 @@ startGameButton.addEventListener('click',
     console.log("#".repeat(welcomText.length));
     console.log(welcomText);
     console.log("#".repeat(welcomText.length));
-    console.log("<<<< Click the button 'Click here to see turn to play'");
     game = startGame();
+    game.watchStats();
+    game.startGame();
   }
 );
 

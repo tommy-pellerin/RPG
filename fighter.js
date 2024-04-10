@@ -7,7 +7,7 @@ class Fighter extends Character {
     if (this.mana >= 20) {
       console.log(`${this.name} is using darkVision on ${victim.name} !`);
       this.dealDamage(victim,5);
-      this.mana = this.mana - 20;
+      // this.mana = this.mana - 20;
       this.dmgReduction = 2; // Store the damage reduction for the next turn
     } else {
       console.log("Not enough mana to use darkVision.");

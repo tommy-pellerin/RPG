@@ -11,7 +11,7 @@ class Assassin extends Character {
         console.log(`${victim.name} is not dead, ${this.name} attack him/herself`);
         this.dealDamage(this,7) //si l'adversaire n'est pas mort, l'assassin perdra 7 dégâts à son tour.
       }
-      this.mana = this.mana - 20
+      // this.mana = this.mana - 20
 
     } else {
       console.log("Not enough mana to use shadowHit.");
