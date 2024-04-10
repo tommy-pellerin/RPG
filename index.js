@@ -36,25 +36,43 @@ startGameButton.addEventListener('click',
   }
 );
 
-// alert("Please select your character")
+
 let gameTurnButton = document.getElementById('gameTurn');
 // console.log(gameTurn);
 gameTurnButton.addEventListener('click',
   function(){  
-    game.startTurn();
-    gameTurnButton.innerHTML = "Next turn";
-  }
-);
-let changePlayerButton = document.getElementById('changePlayer');
-changePlayerButton.addEventListener('click',
-  function(){
-    game.changePlayer();
+    if (game) {
+      game.startTurn();
+      gameTurnButton.innerHTML = "Next turn";
+    } else {
+      console.log('Error: Game is not started yet.');
+      alert('Error: Game is not started yet.');
+    }
   }
 );
 
+//change player
+let changePlayerButton = document.getElementById('changePlayer');
+changePlayerButton.addEventListener('click',  
+  function(){   
+    if (game) {
+      game.changePlayer();
+    } else {
+      console.log('Error: Game is not started yet.');
+      alert('Error: Game is not started yet.');
+    }
+  }
+);
+
+//whatch stats
 let watchStatsButton = document.getElementById('watchStats');
 watchStatsButton.addEventListener('click',  
   function(){
-    game.watchStats();
+    if (game) {
+      game.watchStats();
+    } else {
+      console.log('Error: Game is not started yet.');
+      alert('Error: Game is not started yet.');
+    }
   }
 );

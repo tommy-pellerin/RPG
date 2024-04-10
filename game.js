@@ -19,15 +19,29 @@ class Game {
         console.log(`It's ${currentPlayer.name}'s turn`);
       }
       
+      // Verify if all players have played
+    let allPlayersHavePlayed = this.players.every(player => player.hasPlayed === true);
+  
+    if (allPlayersHavePlayed) {      
       this.skipTurn()
     }
+    alert("At least one player has not played, all players have to play, please check stats"); 
+      
+    }
   }
+  
   changePlayer() {
-    //verify if there is only 1 user, he is the winner or if numberofturnleft reach 0, all player alive are winners
-    if (this.players.length <= 1 || this.numberOfTurnLeft <= 0 ) {
+    // Verify if all players have played
+    let allPlayersHavePlayed = this.players.every(player => player.hasPlayed === true);
+  
+    if (allPlayersHavePlayed) {
+      alert("All players have played, please change turn");  
+    }
+  
+    // Verify if there is only 1 user, he is the winner or if numberOfTurnLeft reach 0, all player alive are winners
+    if (this.players.length <= 1) {
       this.end_game()
     } else {      
-
       if (this.currentPlayerIndex < this.players.length) {
         let currentPlayer = this.players[this.currentPlayerIndex];
         console.log(`It's ${currentPlayer.name}'s turn`);
@@ -43,6 +57,8 @@ class Game {
     // Move to the next player
     this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.players.length;
     console.log("im in skipturn");
+    // Reset hasPlayed for all players
+    this.players.forEach(player => player.hasPlayed = false);
   }
 
   watchStats() {
