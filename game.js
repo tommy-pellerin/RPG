@@ -31,7 +31,7 @@ class Game {
   
   changePlayer() {
     // Verify if all players have played
-    
+    console.log("im in changePlyer method");
     if (this.players.length <= 1) {
       // Verify if there is only 1 user, he is the winner or if numberOfTurnLeft reach 0, all player alive are winners
       this.end_game()
@@ -42,7 +42,7 @@ class Game {
         alert("All players have played, please change turn");
       } else {
         let currentPlayer = this.players[this.currentPlayerIndex];
-        if (currentPlayer && currentPlayer.hasPlayed === false) {
+        if (!currentPlayer.hasPlayed) {
           console.log(`${currentPlayer.name} has not played`);
         } else {
           // if (this.currentPlayerIndex < this.players.length) {

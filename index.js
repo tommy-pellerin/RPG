@@ -54,9 +54,10 @@ gameTurnButton.addEventListener('click',
 
 //change player
 let changePlayerButton = document.getElementById('changePlayer');
-changePlayerButton.addEventListener('click',  
-  function(){   
+changePlayerButton.addEventListener('click',
+  function(){
     if (game) {
+      console.log("Im in changing player button before calling the changePlayer method");
       game.changePlayer();
     } else {
       console.log('Error: Game is not started yet.');
