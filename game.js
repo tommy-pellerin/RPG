@@ -7,12 +7,13 @@ class Game {
   }
 
   startTurn() {
-    //verify if there is only 1 user, he is the winner
+    //verify if there is only 1 user, he is the winner or if numberofturnleft reach 0, all player alive are winners
     if (this.players.length <= 1 || this.numberOfTurnLeft <= 0 ) {
       this.end_game()
     } else {
       console.log(`It\'s turn : ${11 - this.numberOfTurnLeft}`);
       
+
       if (this.currentPlayerIndex < this.players.length) {
         let currentPlayer = this.players[this.currentPlayerIndex];
         console.log(`It's ${currentPlayer.name}'s turn`);
