@@ -1,71 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE RPG GAME</title>
-    <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-    <h1>Hello !</h1>
-    <button id="gameTurn">Click here to start game</button>
-    <h2>The game is in the console >>>>></h2>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>THE RPG GAME</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <h1>Hello !</h1>
+        <button id="gameTurn">Click here to start game</button>
+        <h2>The game is in the console >>>>></h2>
 
-    <section>
-        <h3>How to play ?</h3>
-        <p>When it's your turn, use these commande :</p>
-        <ul>
-            <li>Simple attack : <code>yourName.dealDamage(player_you_want_to_attack)</code></li>
-            <li>Special attack : <code>yourName.specialAttachkName(player_you_want_to_attack)</code></li>
-        </ul>
-        <h3>Depending of your classe, here are the name of each special attack :</h3>
-        <button id="regularAttack">regularAttack</button><br><br>
+        <section>
+            <h3>How to play ?</h3>
+            <p>When it's your turn, use these commande :</p>
+            <ul>
+                <li>Simple attack : <code>yourName.dealDamage(player_you_want_to_attack)</code></li>
+                <li>Special attack : <code>yourName.specialAttachkName(player_you_want_to_attack)</code></li>
+            </ul>
+            <h3>Depending of your classe, here are the name of each special attack :</h3>
+            <button id="regularAttack">regularAttack</button><br><br>
 
-        <table>
-            <tr>
-                <th>playerName</th>
-                <th>Classe</th>
-                <th>specialAttackName</th>
-            </tr>
-            <tr>
-                <td><button id="grace">grace</button></td>
-                <td>Fighter</td>
-                <td><button id="darkVision">darkVision</button></td>
+            <table>
+                <tr>
+                    <th>playerName</th>
+                    <th>Classe</th>
+                    <th>specialAttackName</th>
+                </tr>
+                <tr>
+                    <td><button id="grace">Grace</button></td>
+                    <td>Fighter</td>
+                    <td><button id="darkVision">darkVision</button></td>
 
-            </tr>
-            <tr>
-                <td><button id="ulder">ulder</button></td>
-                <td>Paladin</td>
-                <td><button id="healingLighting">healingLighting</button></td>
-            </tr>
-            <tr>
-                <td><button id="moana">moana</button></td>
-                <td>Monk</td>
-                <td><button id="heal">heal</button></td>
-            </tr>
-            <tr>
-                <td><button id="draven">draven</button></td>
-                <td>Berzerker</td>
-                <td><button id="rage">rage</button></td>
-            </tr>
-            <tr>
-                <td><button id="carl">carl</button></td>
-                <td>Assasin</td>
-                <td><button id="shadowHit">shadowHit</button></td>
-            </tr>
-        </table>
-        
-    </section>
-    <section>
-        <h3>If you want to see status, use this :</h3>
-        <p>game.watchStats()</p>
+                </tr>
+                <tr>
+                    <td><button id="ulder">Ulder</button></td>
+                    <td>Paladin</td>
+                    <td><button id="healingLighting">healingLighting</button></td>
+                </tr>
+                <tr>
+                    <td><button id="moana">Moana</button></td>
+                    <td>Monk</td>
+                    <td><button id="heal">heal</button></td>
+                </tr>
+                <tr>
+                    <td><button id="draven">Draven</button></td>
+                    <td>Berzerker</td>
+                    <td><button id="rage">rage</button></td>
+                </tr>
+                <tr>
+                    <td><button id="carl">Carl</button></td>
+                    <td>Assasin</td>
+                    <td><button id="shadowHit">shadowHit</button></td>
+                </tr>
+                <tr>
+                    <td><button id="voldemor">Voldemor</button></td>
+                    <td>Wizard</td>
+                    <td><button id="fireBall">fireBall</button></td>
+                </tr>
+                <tr>
+                    <td><button id="lilith">Lilith</button></td>
+                    <td>Demon</td>
+                    <td><button id="bloodmeteor">bloodmeteor</button></td>
+                </tr>
+            </table>
+            
+        </section>
+        <section>
+            <h3>If you want to see status, use this :</h3>
+            <p>game.watchStats()</p>
 
-        <h3>If you want to change turn, use this :</h3>
-        <p>game.startTurn()</p>
-    </section>
+            <h3>If you want to change turn, use this :</h3>
+            <p>game.startTurn()</p>
+        </section>
 
 
-    <script src="index.js"></script>
-</body>
+        <script src="character.js"></script>
+        <script src="assassin.js"></script>
+        <script src="berzerker.js"></script>
+        <script src="monk.js"></script>
+        <script src="paladin.js"></script>
+        <script src="fighter.js"></script>
+        <script src="wizard.js"></script>
+        <script src="demon.js"></script>
+        <script src="game.js"></script>
+        <script src="index.js"></script> <!--as this file depends on others files, it should be placed last-->
+    </body>
 </html>
