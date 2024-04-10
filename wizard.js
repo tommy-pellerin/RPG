@@ -5,9 +5,14 @@ class Wizard extends Character {
 
   fireBall(victim) {
     if (this.mana >= 20) {
-      console.log(`${this.name} is using fireBall on ${victim.name} !`);
-      this.dealDamage(victim,7);      
-      // this.mana = this.mana - 25
+      if (this.victimIsAlive(victim)) {
+        console.log(`${this.name} is using fireBall on ${victim.name} !`);
+        this.decreaseMana()
+        // this.mana = this.mana - 25
+        this.dealDamage(victim,7);      
+      } else {
+        console.log(`${victim.name} is not in the game or is already dead.`);
+      };
 
     } else {
       console.log("Not enough mana to use fireBall.");

@@ -5,10 +5,15 @@ class Fighter extends Character {
 
   darkVision(victim) {
     if (this.mana >= 20) {
-      console.log(`${this.name} is using darkVision on ${victim.name} !`);
-      this.dealDamage(victim,5);
-      // this.mana = this.mana - 20;
-      this.dmgReduction = 2; // Store the damage reduction for the next turn
+      if (this.victimIsAlive(victim)) {
+        console.log(`${this.name} is using darkVision on ${victim.name} !`);
+        // this.mana = this.mana - 20;
+        this.decreaseMana()
+        this.dealDamage(victim,5);
+        this.dmgReduction = 2; // Store the damage reduction for the next turn
+      } else {
+        console.log(`${victim.name} is not in the game or is already dead.`);
+      };
     } else {
       console.log("Not enough mana to use darkVision.");
     }

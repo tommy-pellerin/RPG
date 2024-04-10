@@ -5,12 +5,17 @@ class Monk extends Character {
 
   heal(victim) {
     if (this.mana >= 25) {
-      console.log(`${this.name} is using heal on ${victim.name} !`);
-      victim.hp = victim.hp + 8
-      this.mana = this.mana - 25
-      console.log(`${victim.name} got ${victim.hp} lifepoints left.`);
-      // After they have played, set hasPlayed to true
-      currentPlayer.hasPlayed = true;
+      if (this.victimIsAlive(victim)) {
+        console.log(`${this.name} is using heal on ${victim.name} !`);
+        victim.hp = victim.hp + 8
+        // this.mana = this.mana - 25
+        this.decreaseMana()
+        console.log(`${victim.name} got ${victim.hp} lifepoints left.`);
+        // After a player has played, set hasPlayed to true
+        this.hasPlayed = true;
+      } else {
+        console.log(`${victim.name} is not in the game or is already dead.`);
+      };
     } else {
       console.log("Not enough mana to use heal.");
     }

@@ -14,31 +14,34 @@ class Character {
     }
   }
   dealDamage(victim,superDmg) {
-    // Check if victim is in the players array and is not dead
-    const isVictimAlive = game.players.some(player => player.name === victim.name && player.state !== 'loser');
+    // Check if victim is in the players array and is not dead    
 
-    if (victim && isVictimAlive) {
+    // if (this.victimIsAlive(victim)) { //this method is use in each character before doing anything
       if (superDmg) {
         victim.takeDamage(superDmg);
         console.log(`${this.name} is attacking ${victim.name} with special attack. He/she deals him/her ${superDmg} damages.`);
-        this.decreaseMana(); //decrease mana here
+        
       } else {
         victim.takeDamage(this.dmg);
         console.log(`${this.name} is attacking ${victim.name}. He/she deals him/her ${this.dmg} damages.`);
-      }
+      };
       console.log(`${victim.name} got ${victim.hp} lifepoints left.`);
       if (victim.hp <= 0) { 
         victim.state = "loser";
         this.deleteVictim(victim);
-      } 
+      };
       // After a player has played, set hasPlayed to true
       this.hasPlayed = true;
       console.log("<<< Please click on 'Next Player' button to see who is next");
-    } else {
-      console.log(`${victim.name} is not in the game or is already dead.`);
-    }
+    // } else {
+    //   console.log(`${victim.name} is not in the game or is already dead.`);
+    // };
       
-  }  
+  }
+
+  victimIsAlive(victim) {
+    return game.players.some(player => player.name === victim.name) && victim.state !== 'loser';
+  }
 
   deleteVictim(victim) {
     let victimIndex = game.players.findIndex(player => player.name === victim.name);
@@ -49,28 +52,36 @@ class Character {
   }
 
   decreaseMana() {
-    console.log("Je reduit les mana");
+    console.log("Mana is being consumed...");
+    
     switch (this.constructor.name) { 
       case "Fighter":
-        this.mana = this.mana - 20 //the super attack cost 20 mana
+        this.mana = this.mana - 20 
+        console.log("20 mana consumed");
         break;
       case "Paladin":
-        this.mana = this.mana - 40 //the super attack cost 20 mana
+        this.mana = this.mana - 40 
+        console.log("40 mana consumed");
         break;
       case "Monk":
-        this.mana = this.mana - 25 //the super attack cost 20 mana
+        this.mana = this.mana - 25 
+        console.log("25 mana consumed");
         break;
       case "Berzerker":
-        this.mana = this.mana - 0 //the super attack cost 20 mana
+        this.mana = this.mana - 0
+        console.log("no mana consumed");
         break;
-      case "Assasin":
-        this.mana = this.mana - 20 //the super attack cost 20 mana
+      case "Assassin":
+        this.mana = this.mana - 20 
+        console.log("20 mana consumed");
         break;
       case "Wizard":
-        this.mana = this.mana - 25 //the super attack cost 20 mana
+        this.mana = this.mana - 25 
+        console.log("25 mana consumed");
         break;
       case "Demon":
-        this.mana = this.mana - 20 //the super attack cost 20 mana
+        this.mana = this.mana - 20 
+        console.log("20 mana consumed");
         break;
       default:
         // Optional: Perform action for unknown class

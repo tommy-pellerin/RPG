@@ -5,11 +5,16 @@ class Paladin extends Character {
 
   healingLighting(victim) {
     if (this.mana >= 40) {
-      console.log(`${this.name} is using healingLighting on ${victim.name} !`);
-      this.hp = this.hp + 5
-      // this.mana = this.mana - 40
-      console.log(`${this.name} got ${this.hp} lifepoints left.`);
-      this.dealDamage(victim,4);
+      if (this.victimIsAlive(victim)) {
+        console.log(`${this.name} is using healingLighting on ${victim.name} !`);
+        // this.mana = this.mana - 40
+        this.decreaseMana()
+        this.hp = this.hp + 5
+        console.log(`${this.name} heal his/herself of 5 hp and got ${this.hp} lifepoints left.`);
+        this.dealDamage(victim,4);
+      } else {
+        console.log(`${victim.name} is not in the game or is already dead.`);
+      };
     } else {
       console.log("Not enough mana to use healingLighting.");
     }
