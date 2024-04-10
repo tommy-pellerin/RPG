@@ -26,8 +26,9 @@ class Character {
       victim.state = "loser";
       this.deleteVictim(victim);
     } 
-    // After they have played, set hasPlayed to true
+    // After a player has played, set hasPlayed to true
     this.hasPlayed = true;
+    
   }  
 
   deleteVictim(victim) {

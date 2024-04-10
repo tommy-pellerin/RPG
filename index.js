@@ -1,30 +1,54 @@
-const grace = new Fighter('Grace');
-const ulder = new Paladin('Ulder');
-const moana = new Monk('Moana');
-const draven = new Berzerker('Draven');
-const carl = new Assassin('Carl');
-const voldemor = new Wizard('Voldemor');
-const lilith = new Demon('Lilith');
+function startGame() {
+  const grace = new Fighter('Grace');
+  const ulder = new Paladin('Ulder');
+  const moana = new Monk('Moana');
+  const draven = new Berzerker('Draven');
+  const carl = new Assassin('Carl');
+  const voldemor = new Wizard('Voldemor');
+  const lilith = new Demon('Lilith');
 
-const characters = [grace, ulder, moana, draven, carl, voldemor, lilith]; //create an array of characters
-// create a method to shuffle all 7 character
-const shuffle = array => { 
-  return array.sort(() => Math.random() - 0.5); 
-}; 
-const shuffledCharacters = shuffle(characters);
-// after shuffled characters, pick up only 5 of them
-const players = shuffledCharacters.slice(0,5);
-// create party with players picked
-const game = new Game(players);
+  const characters = [grace, ulder, moana, draven, carl, voldemor, lilith]; //create an array of characters
+  // create a method to shuffle all 7 character
+  const shuffle = array => { 
+    return array.sort(() => Math.random() - 0.5); 
+  }; 
+  const shuffledCharacters = shuffle(characters);
+  // after shuffled characters, pick up only 5 of them
+  const players = shuffledCharacters.slice(0,5);
+  // create party with players picked
+  const game = new Game(players);
+
+  // Return the game object
+  return game;
+}
+
+let game;
+
+let startGameButton = document.getElementById('startGame');
+startGameButton.addEventListener('click',
+  function(){
+    let welcomText = "# Welcome to my Javascript battle game ! #"
+    console.log("#".repeat(welcomText.length));
+    console.log(welcomText);
+    console.log("#".repeat(welcomText.length));
+    console.log("<<<< Click the button 'Click here to see turn to play'");
+    game = startGame();
+  }
+);
 
 // alert("Please select your character")
 let gameTurnButton = document.getElementById('gameTurn');
 // console.log(gameTurn);
 gameTurnButton.addEventListener('click',
-  function(){
-    // game.watchStats();
+  function(){  
     game.startTurn();
     gameTurnButton.innerHTML = "Next turn";
+  }
+);
+let changePlayerButton = document.getElementById('changePlayer');
+changePlayerButton.addEventListener('click',
+  function(){
+    game.changePlayer();
   }
 );
 

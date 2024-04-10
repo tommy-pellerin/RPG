@@ -18,15 +18,31 @@ class Game {
         let currentPlayer = this.players[this.currentPlayerIndex];
         console.log(`It's ${currentPlayer.name}'s turn`);
       }
-
+      
       this.skipTurn()
     }
   }
+  changePlayer() {
+    //verify if there is only 1 user, he is the winner or if numberofturnleft reach 0, all player alive are winners
+    if (this.players.length <= 1 || this.numberOfTurnLeft <= 0 ) {
+      this.end_game()
+    } else {      
+
+      if (this.currentPlayerIndex < this.players.length) {
+        let currentPlayer = this.players[this.currentPlayerIndex];
+        console.log(`It's ${currentPlayer.name}'s turn`);
+        
+        this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.players.length;
+      }      
+    }
+  }
+  
 
   skipTurn() {
     this.numberOfTurnLeft -= 1;
     // Move to the next player
     this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.players.length;
+    console.log("im in skipturn");
   }
 
   watchStats() {
