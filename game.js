@@ -4,6 +4,7 @@ class Game {
     this.numberOfTurnLeft = numberOfTurnLeft
     // Randomly select player
     this.currentPlayerIndex = Math.floor(Math.random() * this.players.length);
+    this.currentPlayer = this.players[this.currentPlayerIndex];
   }
 
   startTurn() {
@@ -36,26 +37,26 @@ class Game {
       // Verify if there is only 1 user, he is the winner or if numberOfTurnLeft reach 0, all player alive are winners
       this.end_game()
     } else {
-      let allPlayersHavePlayed = this.players.every(player => player.hasPlayed === true);
+      let allPlayersHavePlayed = this.players.every(player => player.hasPlayed === true); // check if all players have played
       
       if (allPlayersHavePlayed) {
+        console.log("All players have played, please change turn");
         alert("All players have played, please change turn");
-      } else {
-        let currentPlayer = this.players[this.currentPlayerIndex];
-        if (!currentPlayer.hasPlayed) {
-          console.log(`${currentPlayer.name} has not played`);
+      } else {        
+        if (!this.currentPlayer.hasPlayed) {
+          console.log(`${this.currentPlayer.name} has not played`);
         } else {
           // if (this.currentPlayerIndex < this.players.length) {
             this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.players.length;
-            let currentPlayer = this.players[this.currentPlayerIndex];
+            this.currentPlayer = this.players[this.currentPlayerIndex];
             console.log(`It\'s turn : ${11 - this.numberOfTurnLeft}`);
-            console.log(`It's ${currentPlayer.name}'s turn`);
+            console.log(`It's ${this.currentPlayer.name}'s turn`);
             // Check if currentPlayer is an instance of Berzerker and is in rage
-            if (currentPlayer instanceof Berzerker && currentPlayer.isRage) {
-              currentPlayer.raging();
+            if (this.currentPlayer instanceof Berzerker && this.currentPlayer.isRaging) {
+              this.currentPlayer.raging();
             }
-          // }  
-        }            
+          // }
+        }
       }
     }
     

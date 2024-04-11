@@ -121,6 +121,7 @@ fighterButton.addEventListener('click',
       user = new Fighter(userName);
       console.log(`You have selected : >> ${userName} the Fighter <<`);
       launchGameButton.classList.add('yourClassName'); //show the launch game button
+      console.log("Please click on button : 'Launch game when you are ready'");
     } else {
       console.log('Error: Game is not started yet.');
       alert('Error: Game is not started yet.');
