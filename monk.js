@@ -13,6 +13,7 @@ class Monk extends Character {
         console.log(`${victim.name} got ${victim.hp} lifepoints left.`);
         // After a player has played, set hasPlayed to true
         this.hasPlayed = true;
+        console.log("<<< Please click on 'Next Player' button to see who is next");
       } else {
         console.log(`${victim.name} is not in the game or is already dead.`);
       };

@@ -20,6 +20,9 @@ function startGame() {
     // after shuffled characters, pick up only 5 of them
     const players = shuffledCharacters.slice(0,4);
     players.push(user);
+    players.forEach(player => {
+      player.state = "playing"
+    });
     // create party with players picked
     const game = new Game(players);
     game.watchStats();
@@ -34,6 +37,7 @@ function startGame() {
 }
 
 let game;
+window.game = game;
 let powerOn;
 
 let startGameButton = document.getElementById('startGame');
@@ -44,7 +48,7 @@ startGameButton.addEventListener('click',
     console.log(welcomText);
     console.log("#".repeat(welcomText.length));
     console.log("please select your classe");
-    alert("please select your classe");
+    // alert("please select your classe");
     powerOn = true;
   }
 );
@@ -83,7 +87,7 @@ let changePlayerButton = document.getElementById('changePlayer');
 changePlayerButton.addEventListener('click',
   function(){
     if (game) {
-      console.log("Im in changing player button before calling the changePlayer method");
+      // console.log("Im in changing player button before calling the changePlayer method");
       game.changePlayer();
     } else {
       console.log('Error: Game is not started yet.');
@@ -92,7 +96,7 @@ changePlayerButton.addEventListener('click',
   }
 );
 
-//whatch stats
+//watch stats
 let watchStatsButton = document.getElementById('watchStats');
 watchStatsButton.addEventListener('click',  
   function(){
@@ -107,12 +111,12 @@ watchStatsButton.addEventListener('click',
 
 //classe selection for user
 let fighterButton = document.getElementById('fighter');
-let ulderButton = document.getElementById('ulder');
-let moanaButton = document.getElementById('moana');
-let dravenButton = document.getElementById('draven');
-let carlButton = document.getElementById('carl');
-let voldemorButton = document.getElementById('voldemor');
-let lilithButton = document.getElementById('lilith');
+let paladinButton = document.getElementById('paladin');
+let monkButton = document.getElementById('monk');
+let berzerkerButton = document.getElementById('berzerker');
+let assassinButton = document.getElementById('assassin');
+let wizardButton = document.getElementById('wizard');
+let demonButton = document.getElementById('demon');
 
 fighterButton.addEventListener('click',
   function() {
@@ -128,3 +132,94 @@ fighterButton.addEventListener('click',
     }    
   }
 );
+
+paladinButton.addEventListener('click',
+  function() {
+    if (powerOn) {
+      let userName = prompt("Please enter your name");
+      user = new Paladin(userName);
+      console.log(`You have selected : >> ${userName} the Paladin <<`);
+      launchGameButton.classList.add('yourClassName'); //show the launch game button
+      console.log("Please click on button : 'Launch game when you are ready'");
+    } else {
+      console.log('Error: Game is not started yet.');
+      alert('Error: Game is not started yet.');
+    }    
+  }
+);
+
+monkButton.addEventListener('click',
+  function() {
+    if (powerOn) {
+      let userName = prompt("Please enter your name");
+      user = new Monk(userName);
+      console.log(`You have selected : >> ${userName} the Monk <<`);
+      launchGameButton.classList.add('yourClassName'); //show the launch game button
+      console.log("Please click on button : 'Launch game when you are ready'");
+    } else {
+      console.log('Error: Game is not started yet.');
+      alert('Error: Game is not started yet.');
+    }    
+  }
+);
+
+berzerkerButton.addEventListener('click',
+  function() {
+    if (powerOn) {
+      let userName = prompt("Please enter your name");
+      user = new Berzerker(userName);
+      console.log(`You have selected : >> ${userName} the Berzerker <<`);
+      launchGameButton.classList.add('yourClassName'); //show the launch game button
+      console.log("Please click on button : 'Launch game when you are ready'");
+    } else {
+      console.log('Error: Game is not started yet.');
+      alert('Error: Game is not started yet.');
+    }    
+  }
+);
+
+assassinButton.addEventListener('click',
+  function() {
+    if (powerOn) {
+      let userName = prompt("Please enter your name");
+      user = new Assassin(userName);
+      console.log(`You have selected : >> ${userName} the Assassin <<`);
+      launchGameButton.classList.add('yourClassName'); //show the launch game button
+      console.log("Please click on button : 'Launch game when you are ready'");
+    } else {
+      console.log('Error: Game is not started yet.');
+      alert('Error: Game is not started yet.');
+    }    
+  }
+);
+
+wizardButton.addEventListener('click',
+  function() {
+    if (powerOn) {
+      let userName = prompt("Please enter your name");
+      user = new Wizard(userName);
+      console.log(`You have selected : >> ${userName} the Wizard <<`);
+      launchGameButton.classList.add('yourClassName'); //show the launch game button
+      console.log("Please click on button : 'Launch game when you are ready'");
+    } else {
+      console.log('Error: Game is not started yet.');
+      alert('Error: Game is not started yet.');
+    }    
+  }
+);
+
+demonButton.addEventListener('click',
+  function() {
+    if (powerOn) {
+      let userName = prompt("Please enter your name");
+      user = new Demon(userName);
+      console.log(`You have selected : >> ${userName} the Demon <<`);
+      launchGameButton.classList.add('yourClassName'); //show the launch game button
+      console.log("Please click on button : 'Launch game when you are ready'");
+    } else {
+      console.log('Error: Game is not started yet.');
+      alert('Error: Game is not started yet.');
+    }    
+  }
+);
+

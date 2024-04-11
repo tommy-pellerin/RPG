@@ -1,5 +1,5 @@
 class Character {
-  constructor(name, hp, dmg, mana, hasPlayed = false, state = "playing") {
+  constructor(name, hp, dmg, mana, hasPlayed = false, state = "loser") {
     this.name = name;
     this.hp = hp; //Un personnage commence avec un nombre défini de hp. S'il passe à 0 points de vie, il devient loser
     this.dmg = dmg; //damage
@@ -28,7 +28,8 @@ class Character {
       console.log(`${victim.name} got ${victim.hp} lifepoints left.`);
       if (victim.hp <= 0) { 
         victim.state = "loser";
-        this.deleteVictim(victim);
+        // this.deleteVictim(victim);
+        console.log(`${victim.name} is dead`);
       };
       // After a player has played, set hasPlayed to true
       this.hasPlayed = true;
@@ -40,15 +41,15 @@ class Character {
   }
 
   victimIsAlive(victim) {
-    return game.players.some(player => player.name === victim.name) && victim.state !== 'loser';
+    // return game.players.some(player => player.name === victim.name) && victim.state !== 'loser';
+    return victim.state !== 'loser';
   }
 
   deleteVictim(victim) {
-    let victimIndex = game.players.findIndex(player => player.name === victim.name);
-    if (victimIndex !== -1) {
-      game.players.splice(victimIndex, 1);
-    }
-    console.log(`${victim.name} is dead`);
+    // let victimIndex = game.players.findIndex(player => player.name === victim.name);
+    // if (victimIndex !== -1) {
+    //   game.players.splice(victimIndex, 1);
+    // }
   }
 
   decreaseMana() {
@@ -88,5 +89,29 @@ class Character {
         console.log(`${this.name} has an unknown class.`);
     }
   }
+
+  enoughMana() {
+    console.log("Check if enough mana");
+    switch (this.constructor.name) { 
+      case "Fighter":
+        return this.mana >= 20;
+      case "Paladin":
+        return this.mana >= 40 ;
+      case "Monk":
+        return this.mana >= 25 ;
+      case "Berzerker":
+        return this.mana >= 0;
+      case "Assassin":
+        return this.mana >= 20 ;
+      case "Wizard":
+        return this.mana >= 25 ;
+      case "Demon":
+        return this.mana >= 20 
+      default:
+        // Optional: Perform action for unknown class
+        console.log(`${this.name} has an unknown class.`);
+    }
+  }
+  
 
 }

@@ -4,7 +4,7 @@ class Demon extends Character {
   }
 
   bloodMeteor(victim) { 
-    if (this.mana >= 20) {
+    if (this.enoughMana()) {
       if (this.victimIsAlive(victim)) {
         console.log(`${this.name} is using bloodMeteor on ${victim.name} !`);
         this.decreaseMana()
