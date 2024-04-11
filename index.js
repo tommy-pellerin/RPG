@@ -6,23 +6,35 @@ const carl = new Assassin('Carl');
 const voldemor = new Wizard('Voldemor');
 const lilith = new Demon('Lilith');
 
-function startGame() {
-  const characters = [grace, ulder, moana, draven, carl, voldemor, lilith]; //create an array of characters
-  // create a method to shuffle all 7 character
-  const shuffle = array => { 
-    return array.sort(() => Math.random() - 0.5); 
-  }; 
-  const shuffledCharacters = shuffle(characters);
-  // after shuffled characters, pick up only 5 of them
-  const players = shuffledCharacters.slice(0,5);
-  // create party with players picked
-  const game = new Game(players);
+let user; // Define user outside of startGame
 
-  // Return the game object
-  return game;
+function startGame() {
+  
+  if (typeof user === 'object' && user !== null) {
+    const characters = [grace, ulder, moana, draven, carl, voldemor, lilith]; //create an array of characters
+    // create a method to shuffle all 7 character
+    const shuffle = array => { 
+      return array.sort(() => Math.random() - 0.5); 
+    }; 
+    const shuffledCharacters = shuffle(characters);
+    // after shuffled characters, pick up only 5 of them
+    const players = shuffledCharacters.slice(0,4);
+    players.push(user);
+    // create party with players picked
+    const game = new Game(players);
+    game.watchStats();
+    game.startGame();
+    // Return the game object
+    return game;
+    
+  } else {
+    console.log("please select your classe");
+    alert("please select your classe");    
+  }  
 }
 
 let game;
+let powerOn;
 
 let startGameButton = document.getElementById('startGame');
 startGameButton.addEventListener('click',
@@ -31,13 +43,27 @@ startGameButton.addEventListener('click',
     console.log("#".repeat(welcomText.length));
     console.log(welcomText);
     console.log("#".repeat(welcomText.length));
-    game = startGame();
-    game.watchStats();
-    game.startGame();
+    console.log("please select your classe");
+    alert("please select your classe");
+    powerOn = true;
   }
 );
 
+let launchGameButton = document.getElementById('launchGame');
+launchGameButton.addEventListener('click',
+  function(){
+    if (powerOn) {
+      game = startGame();
 
+    } else {
+      console.log('Error: Game is not started yet.');
+      alert('Error: Game is not started yet.');
+    }
+    
+  }
+);
+
+//see turn
 let gameTurnButton = document.getElementById('gameTurn');
 // console.log(gameTurn);
 gameTurnButton.addEventListener('click',
@@ -76,5 +102,28 @@ watchStatsButton.addEventListener('click',
       console.log('Error: Game is not started yet.');
       alert('Error: Game is not started yet.');
     }
+  }
+);
+
+//classe selection for user
+let fighterButton = document.getElementById('fighter');
+let ulderButton = document.getElementById('ulder');
+let moanaButton = document.getElementById('moana');
+let dravenButton = document.getElementById('draven');
+let carlButton = document.getElementById('carl');
+let voldemorButton = document.getElementById('voldemor');
+let lilithButton = document.getElementById('lilith');
+
+fighterButton.addEventListener('click',
+  function() {
+    if (powerOn) {
+      let userName = prompt("Please enter your name");
+      user = new Fighter(userName);
+      console.log(`You have selected : >> ${userName} the Fighter <<`);
+      launchGameButton.classList.add('yourClassName'); //show the launch game button
+    } else {
+      console.log('Error: Game is not started yet.');
+      alert('Error: Game is not started yet.');
+    }    
   }
 );
