@@ -5,3 +5,18 @@ table {
 tr,td,th {
   border: 2px solid black;
 }
+
+#startGame {
+  background-color: blue;
+  color: white;
+}
+
+#launchGame {
+  background-color: green;
+  color: white;
+}
+
+#watchStats {
+  background-color: gold;
+  color: black;
+}
