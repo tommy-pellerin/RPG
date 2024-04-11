@@ -91,7 +91,7 @@ class Character {
   }
 
   enoughMana() {
-    console.log("Check if enough mana");
+    // console.log("Check if enough mana");
     switch (this.constructor.name) { 
       case "Fighter":
         return this.mana >= 20;

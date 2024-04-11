@@ -20,3 +20,92 @@ tr,td,th {
   background-color: gold;
   color: black;
 }
+
+#fighter {
+  background-color: gold;
+  color: black;
+}
+#paladin {
+  background-color: rgb(255, 149, 0);
+  color: black;
+}
+#monk {
+  background-color: rgb(204, 255, 0);
+  color: black;
+}
+#berzerker {
+  background-color: rgb(255, 64, 0);
+  color: black;
+}
+#assassin {
+  background-color: rgb(5, 5, 5);
+  color: white;
+}
+#wizard {
+  background-color: rgb(128, 0, 255);
+  color: white;
+}
+#demon {
+  background-color: rgb(85, 0, 255);
+  color: white;
+}
+
+.button:hover {
+  background-color: darkblue;
+  color: white;
+}
+
+#startGame:hover {
+  background-color: darkblue;
+  color: white;
+}
+
+#fighter:hover {
+  background-color: darkblue;
+  color: white;
+}
+
+#paladin:hover {
+  background-color: darkblue;
+  color: white;
+}
+
+#paladin:hover {
+  background-color: darkblue;
+  color: white;
+}
+
+#monk:hover {
+  background-color: darkblue;
+  color: white;
+}
+
+#berzerker:hover {
+  background-color: darkblue;
+  color: white;
+}
+
+#assassin:hover {
+  background-color: darkblue;
+  color: white;
+}
+
+#wizard:hover {
+  background-color: darkblue;
+  color: white;
+}
+
+#demon:hover {
+  background-color: darkblue;
+  color: white;
+}
+
+#launchGame:hover {
+  background-color: darkblue;
+  color: white;
+}
+
+#watchStats:hover {
+  background-color: darkblue;
+  color: white;
+}

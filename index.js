@@ -47,7 +47,7 @@ startGameButton.addEventListener('click',
     console.log("#".repeat(welcomText.length));
     console.log(welcomText);
     console.log("#".repeat(welcomText.length));
-    console.log("please select your classe");
+    console.log("Please select your classe");
     // alert("please select your classe");
     powerOn = true;
   }
@@ -57,6 +57,7 @@ let launchGameButton = document.getElementById('launchGame');
 launchGameButton.addEventListener('click',
   function(){
     if (powerOn) {
+      console.log("READY GO !");
       game = startGame();
 
     } else {
@@ -74,7 +75,6 @@ gameTurnButton.addEventListener('click',
   function(){  
     if (game) {
       game.startTurn();
-      gameTurnButton.innerHTML = "Next turn";
     } else {
       console.log('Error: Game is not started yet.');
       alert('Error: Game is not started yet.');
