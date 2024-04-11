@@ -48,29 +48,34 @@ class Game {
         alert("All players have played, please change turn");
       } else {   
         // if is user, user must play
-        if (!this.currentPlayer.hasPlayed) {
+        // console.log(`Le status de hasPlayed : ${this.currentPlayer.hasPlayed}`);
+        if (!this.currentPlayer.hasPlayed) { // if the current player has not played, can't changer to another user
           console.log(`>>> It's ${this.currentPlayer.name}'s turn`);
-          if (this.currentPlayer !== user) { //if is AI auto play
+          
+          if (this.currentPlayer !== user) { //if the current player is AI => auto play
               this.autoPLay();
-            }
-        } else {
-          this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.players.length;
+            };
+        } else { //if the current player has played, change player to play
+          // console.log(`L'index actuell : ${this.currentPlayerIndex}`);
+          this.currentPlayerIndex = (this.currentPlayerIndex + 1) % this.players.length; //skip to the next player of the table, % keep the loop in the table when it reach de maximum
+          // console.log(`L'index suivant : ${this.currentPlayerIndex}`);
           this.currentPlayer = this.players[this.currentPlayerIndex];
           console.log(`***** It\'s turn : ${11 - this.numberOfTurnLeft} *****`);
           console.log(`>>> It's ${this.currentPlayer.name}'s turn`);
           // Check if currentPlayer is an instance of Berzerker and is in rage
-          if (this.currentPlayer instanceof Berzerker && this.currentPlayer.isRaging) {
+          if (this.currentPlayer instanceof Berzerker && this.currentPlayer.isRaging) { //if the current player is a berzerker and has used Rage
             this.currentPlayer.raging();
-          }
-          if (this.currentPlayer !== user) { //if is AI auto play
-            this.autoPLay();
-          }
+          };
           
-        }
-      }
-    }
+          if (this.currentPlayer !== user) { //if the current player is AI => auto play
+            this.autoPLay();
+          };
+          
+        };
+      };
+    };
     
-  }  
+  };
 
   skipTurn() {
     this.numberOfTurnLeft -= 1;
