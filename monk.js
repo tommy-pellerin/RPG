@@ -7,6 +7,7 @@ class Monk extends Character {
     if (this.mana >= 25) {
       if (this.victimIsAlive(victim)) {
         console.log(`${this.name} is using heal on ${victim.name} !`);
+        console.log("💖💖💖💖💖💖💖💖");
         victim.hp = victim.hp + 8
         // this.mana = this.mana - 25
         this.decreaseMana()

@@ -7,10 +7,12 @@ class Demon extends Character {
     if (this.enoughMana()) {
       if (this.victimIsAlive(victim)) {
         console.log(`${this.name} is using bloodMeteor on ${victim.name} !`);
+        console.log("☄️☄️☄️☄️☄️☄️☄️☄️");
         this.decreaseMana()
         // this.mana = this.mana - 20 //the super attack cost 20 mana
         this.dealDamage(victim,8);
         console.log(`As the attack is uncontrollable, ${this.name} attack him/herself !`);
+        console.log("☄️☄️☄️☄️☄️☄️☄️☄️");
         this.dealDamage(this,5) //the super attack touch the owner and decrease it hp by 5 lifepoints      
 
       } else {

@@ -111,11 +111,16 @@ class Game {
 
   autoPLay() {
     // console.log("Im in auto play");
-    //create an array of victim to filter the player in order to avoid atacking itself
+    //create an array of victim to filter the player in order to avoid attacking itself
     let victims = this.players.filter(player => player !== this.currentPlayer);
     //generate random victim !!! be careful can't heal itself
     let victimIndex = Math.floor(Math.random() * victims.length);
     let victim = victims[victimIndex];
+    if (this.currentPlayer.constructor.name === "Monk"){ //this condition to allow monk to heal him/herself
+      victims = this.players
+      victimIndex = Math.floor(Math.random() * victims.length);
+      victim = victims[victimIndex];
+    }
     if (this.currentPlayer.enoughMana()) {
       // console.log("Mana is enough >> superAttack");
       // console.log(this.currentPlayer);

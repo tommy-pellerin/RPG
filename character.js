@@ -23,13 +23,13 @@ class Character {
         
       } else {
         victim.takeDamage(this.dmg);
-        console.log(`${this.name} is attacking ${victim.name}. He/she deals him/her ${this.dmg} damages.`);
+        console.log(`🤛🤛🤛 ${this.name} is attacking ${victim.name}. He/she deals him/her ${this.dmg} damages. 🤜🤜🤜`);
       };
       console.log(`${victim.name} got ${victim.hp} lifepoints left.`);
       if (victim.hp <= 0) { 
         victim.state = "loser";
         // this.deleteVictim(victim);
-        console.log(`${victim.name} is dead`);
+        console.log(`👻👻👻 ${victim.name} is dead 👻👻👻`);
       };
       // After a player has played, set hasPlayed to true
       this.hasPlayed = true;

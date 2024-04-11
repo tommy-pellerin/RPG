@@ -7,6 +7,7 @@ class Berzerker extends Character {
   rage(victim) {
     if (this.victimIsAlive(victim)) {
       console.log(`${this.name} is using rage on ${victim.name} !`);
+      console.log("🤬😡🤬😡🤬");
       this.decreaseMana()
       this.isRaging = true; // Set isRaging to true when rage is used
       this.raging();

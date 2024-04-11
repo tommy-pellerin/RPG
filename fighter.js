@@ -7,6 +7,7 @@ class Fighter extends Character {
     if (this.mana >= 20) {
       if (this.victimIsAlive(victim)) {
         console.log(`${this.name} is using darkVision on ${victim.name} !`);
+        console.log("👁️👁️👁️👁️👁️");
         // this.mana = this.mana - 20;
         this.decreaseMana()
         this.dealDamage(victim,5);
